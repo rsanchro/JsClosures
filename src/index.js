@@ -60,3 +60,42 @@ const doSomething = x => y => x * y;
 const a = doSomething(2)(2); // a contiene 4
 const b = doSomething(3); // b contiene y => 3 * y
 c(doSomething(a)(b(3))); // doSomething(4)(9) = 36 porque  4 * (3*3)
+
+// FUNCIONES AUTOINVOCADAS
+
+/*
+  Son funciones que se autoejecutan solas, la forma de hacerlo es metiendo entre paréntesis la propia función, ejemplo
+*/
+let s = "Hola";
+const saludar = ((ss, pp) => `${ss} ${pp}`)(s, "Luis");
+c(saludar);
+// se usaba mucho antes, en ES5, que estaba cojo y le faltaban cosas, fijarse que tiene 2 paréntesis en los parametros
+
+// FUNCIONES NOMBRADAS O ANONIMAS
+
+// Si no tuviera los () finales no se podría ejecutar
+
+/*
+setTimeout(() => {
+  alert(`Hola Ruben`);
+}, 3000);
+*/
+
+/*(function(message) {
+  alert(message);
+}('foo'));
+
+(function() {
+  alert("fuuuu");
+})();
+
+(function() {
+  alert('I am anonymous');
+})
+
+var anon = function() {
+  alert('I am anonymous');
+}
+anon();
+
+*/
