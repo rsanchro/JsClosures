@@ -8,7 +8,6 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-
 /*
 
 CLOSURES
@@ -24,8 +23,8 @@ Suma(3) tan solo nos devolverá el literal de function (b)...
 Pero si le pasamos el segundo parámetro (2) obtendremos la suma
 */
 
-console.log("Prueba")
-
+console.log("Prueba");
+let c = console.log;
 /*
 function suma (x)
 {
@@ -39,19 +38,25 @@ c(suma(3)(2))
 
 */
 
-
 /*
 También podemos utilizarlo con funciones flechas
 */
 
 // función lógica que devuelve una multiplicación con 2 variables
-const multiplica = (a,b) => a*b;
+const multiplica = (a, b) => a * b;
 
 // Cada => es un function, de forma que al ejecutarse solo una vez por ejemplo
-const suma = a => b => a*b;
+const suma = a => b => a * b;
 
-// Nos muestra el literal a partir de: => b => a*b;  
+// Nos muestra el literal a partir de: => b => a*b;
 console.log(suma(4));
 
-// Si le metemos el segundo valor obtenemos:  
+// Si le metemos el segundo valor obtenemos:
 console.log(suma(4)(2));
+
+// OTRA FORMA DE VERLO MÁS COMPLICADA PERO HACIENDO LO MISMO
+
+const doSomething = x => y => x * y;
+const a = doSomething(2)(2); // 4
+const b = doSomething(3); // y => 3 * y
+c(doSomething(a)(b(3))); // doSomething(4)(9) = 36
