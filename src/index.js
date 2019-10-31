@@ -57,6 +57,6 @@ console.log(suma(4)(2));
 // OTRA FORMA DE VERLO MÁS COMPLICADA PERO HACIENDO LO MISMO
 
 const doSomething = x => y => x * y;
-const a = doSomething(2)(2); // 4
-const b = doSomething(3); // y => 3 * y
-c(doSomething(a)(b(3))); // doSomething(4)(9) = 36
+const a = doSomething(2)(2); // a contiene 4
+const b = doSomething(3); // b contiene y => 3 * y
+c(doSomething(a)(b(3))); // doSomething(4)(9) = 36 porque  4 * (3*3)
