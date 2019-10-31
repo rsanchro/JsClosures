@@ -97,5 +97,55 @@ var anon = function() {
   alert('I am anonymous');
 }
 anon();
-
 */
+
+// EL SCOPE es el contexto en el que una variable existe
+// ejemplo:
+// no me deja llamar a profesor porque solo existe en el espacio entre llaves, solo puedes leer cuando te encuentras por dentro
+{
+  let profesor = "Alexis";
+  {
+    profesor = "Ruben";
+    console.log(profesor);
+  }
+}
+// c(profesor); (no existe)
+
+// VOLVEMOS CON LOS CLOSURES -
+function aumentar() {
+  let numero = 0; // la ventaja de tener aquí numero es que se encuntra protegida la variable y no se puede cambiar
+  return function() {
+    numero++;
+    console.log(numero);
+  };
+}
+// esta llamada de abajo devuelve... // function() {   numero++;   console.log(numero); };
+aumentar(3);
+aumentar(3);
+aumentar(3);
+
+c(aumentar(3)(3)); // sigue pasando y devolviendo
+
+const incrementar = aumentar();
+incrementar(); // Devuelve 1 porque el let numero se encuentra por fuera, es decir, como si tuvieras numero de forma global y solo hicieras numero++ cada vez que lo llamas
+incrementar(); // Devuelve 2
+incrementar(); // Devuelve 3
+incrementar(); // Devuelve 4
+// no sería una función pura porque se encuentra por fuera
+
+// es lo mismo que: (sin embargo n no se encuentra protegida por la función como si ocurre aquí)
+let n = 0;
+function aument() {
+  console.log(n++);
+}
+
+let edad = 34;
+// THIS SERÍA EL OBJETO TAL CUAL en el que te encuentras
+let user = {
+  nombre: "Rubén",
+  edad: 54,
+  getEdad() {
+    console.log(this.edad); // THIS SERÍA EL OBJETO TAL CUAL en el que te encuentras, si se lo quitara intentaría buscarlo por fuera, en el objeto global, en el scope mas alto y daría 34
+  }
+};
+user.getEdad();
