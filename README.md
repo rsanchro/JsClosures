@@ -1,2 +1,0 @@
-# JsClosures
-Created with CodeSandbox
